@@ -19,10 +19,8 @@ O projeto foi construído a partir do desafio
 
 ## 🏛️ Arquitetura
 
-![Arquitetura do Pipeline ETL](diagrams/arquitetura.png)
+![Arquitetura do Pipeline ETL](diagrams/)
 
-### Fluxo de Execução
-![Fluxo de Execução](diagrams/fluxo_de_execução.png)
 ---
 
 ## 🛠️ Tecnologias Utilizadas
