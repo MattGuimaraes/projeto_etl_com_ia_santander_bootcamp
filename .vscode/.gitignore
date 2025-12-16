@@ -1,0 +1,16 @@
+# Ambiente virtual
+.venv/
+
+# Cache Python
+__pycache__/
+*.pyc
+
+# Variáveis de ambiente
+.env
+
+# Outputs gerados
+report_etl.csv
+
+# Sistema operacional / IDE
+.vscode/
+.DS_Store
