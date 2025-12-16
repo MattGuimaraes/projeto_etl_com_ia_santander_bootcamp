@@ -15,14 +15,14 @@ from colorama import Fore, Style, init as colorama_init
 
 
 # =========================
-# INIT (cores no terminal)
+# (cores no terminal)
 # =========================
 
 colorama_init(autoreset=True)
 
 
 # =========================
-# CONFIG
+# CONFIGURAÇÃO
 # =========================
 
 @dataclass(frozen=True)
@@ -35,9 +35,7 @@ class Settings:
     timeout_sec: int = 20
     report_path: str = "report_etl.csv"
 
-    # Aparência do terminal
-    wrap_news_width: int = 75  # largura da coluna "Última News" no terminal
-
+    wrap_news_width: int = 75  
 
 def load_settings() -> Settings:
     load_dotenv()
@@ -108,13 +106,11 @@ def clean_text(text: str) -> str:
     """
     text = (text or "").strip()
 
-    # Remove markdown comum
     text = text.replace("**", "")
     text = text.replace("__", "")
     text = text.replace("`", "")
     text = text.replace("*", "")
 
-    # Remove quebras e múltiplos espaços
     text = re.sub(r"\s+", " ", text).strip()
     return text
 
@@ -129,8 +125,8 @@ def format_brl(value: float) -> str:
     except Exception:
         n = 0.0
 
-    s = f"{n:,.2f}"  # ex: 20,000.00 (US style)
-    s = s.replace(",", "X").replace(".", ",").replace("X", ".")  # -> 20.000,00
+    s = f"{n:,.2f}"  
+    s = s.replace(",", "X").replace(".", ",").replace("X", ".")
     return f"R$ {s}"
 
 
@@ -181,7 +177,7 @@ def get_user(api_url: str, user_id: int, timeout_sec: int) -> Optional[Dict[str,
 
 
 # =========================
-# TABELA LEGÍVEL (leigos)
+# TABELA LEGÍVEL
 # =========================
 
 def print_users_table(users: List[Dict[str, Any]], wrap_width: int) -> None:
@@ -214,7 +210,6 @@ def print_users_table(users: List[Dict[str, Any]], wrap_width: int) -> None:
 
     df = pd.DataFrame(rows).sort_values(by="ID")
 
-    # evita truncamento de colunas no pandas
     with pd.option_context("display.max_colwidth", None, "display.width", 160):
         print(df.to_string(index=False))
 
